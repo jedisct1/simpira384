@@ -20,7 +20,7 @@
         SIMPIRA_F(((INV) ? 20 - (R) : (R)) + 1, 3, \
                   STATE[((INV) ? 20 - (R) : (R)) % 3], (Z))
 
-#define SIMPIRA384_PERMUTE(INV, STATE, Z)        \
+#define SIMPIRA384_PERMUTE(INV, STATE)           \
     do {                                         \
         const __m128i z = _mm_setzero_si128();   \
         SIMPIRA384_ROUND((INV), (STATE), z, 0);  \
@@ -49,13 +49,13 @@
 static inline void
 _simpira384_permute(__m128i state[3])
 {
-    SIMPIRA384_PERMUTE(0, state, zero);
+    SIMPIRA384_PERMUTE(0, state);
 }
 
 static inline void
 _simpira384_permute_inv(__m128i state[3])
 {
-    SIMPIRA384_PERMUTE(1, state, zero);
+    SIMPIRA384_PERMUTE(1, state);
 }
 
 void
