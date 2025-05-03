@@ -11,8 +11,8 @@
 #define SIMPIRA_F(C, B, X, Z)                                                \
     _mm_aesenc_si128(                                                        \
         _mm_aesenc_si128((X),                                                \
-                         _mm_set_epi32(0x00 ^ (C) ^ (B), 0x10 ^ (C) ^ (B),   \
-                                       0x20 ^ (C) ^ (B), 0x30 ^ (C) ^ (B))), \
+                         _mm_set_epi32(0x30 ^ (C) ^ (B), 0x20 ^ (C) ^ (B),   \
+                                       0x10 ^ (C) ^ (B), 0x00 ^ (C) ^ (B))), \
         (Z))
 
 #define SIMPIRA384_ROUND(INV, STATE, Z, R)         \
